@@ -2,8 +2,8 @@ import k from "./kaplayCtx";
 import world from "./scenes/world.js";
 
 k.loadSprite("assets", "./assets/tilesets/tileset.png", {
-    sliceX: 41,
-    sliceY: 37,
+    sliceX: 39,
+    sliceY: 36,
 });
 
 const scenes = {

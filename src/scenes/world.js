@@ -5,7 +5,7 @@ async function world(k) {
 
     const mapData = await fetchMapData("./assets/maps/world.json");
 
-    const map = k.add([k.pos(0, 0)]);
+    const map = k.add([k.pos(-22, -500)                        ]);
 
     const entities = {
         player: null,
