@@ -1,3 +1,4 @@
+import { generatePlayerComponents } from "../entities/player";
 import { drawTiles, fetchMapData, insertBackgroundColour } from "../utils";
 
 async function world(k) {
@@ -5,7 +6,7 @@ async function world(k) {
 
     const mapData = await fetchMapData("./assets/maps/world.json");
 
-    const map = k.add([k.pos(-22, -500)                        ]);
+    const map = k.add([k.pos(-550, -320)]);
 
     const entities = {
         player: null,
@@ -20,10 +21,18 @@ async function world(k) {
         }
 
         if (layer.name === "SpawnPoints") {
+            for (const object of layer.objects) {
+                if (object.name === "Player ") {
+                    entities.player = k.add(generatePlayerComponents(k, k.vec2(object.x, object.y)))
+                    continue;
+                }
+            }
             continue;
         }
 
         drawTiles(k, map, layer, mapData.tileheight, mapData.tilewidth)
+
+        k.camScale(2.3)
     }
 }
 

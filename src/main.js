@@ -3,7 +3,10 @@ import world from "./scenes/world.js";
 
 k.loadSprite("assets", "./assets/tilesets/tileset.png", {
     sliceX: 39,
-    sliceY: 36,
+    sliceY: 35.9,
+    anims: {
+        "player-idle-down": 900,
+    }
 });
 
 const scenes = {
