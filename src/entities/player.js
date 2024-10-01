@@ -1,7 +1,7 @@
 export function generatePlayerComponents(k, pos) {
     return [
         k.sprite("assets", {
-            anims: "player-idle-down",
+            anim: "player-idle-down",
         }),
         k.area({ shape: new k.Rect(k.vec2(3, 4), 10, 12) }),
         k.body(),
