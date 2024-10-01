@@ -1,6 +1,14 @@
 import { generateEnemyComponents } from "../entities/enemy";
-import { generatePlayerComponents } from "../entities/player";
-import { drawCollisions, drawTiles, fetchMapData, insertBackgroundColour } from "../utils";
+import {
+    generatePlayerComponents,
+    setPlayerMovement,
+} from "../entities/player";
+import {
+    drawCollisions,
+    drawTiles,
+    fetchMapData,
+    insertBackgroundColour,
+} from "../utils";
 
 async function world(k) {
     insertBackgroundColour(k, 40, 40, 10);
@@ -18,7 +26,7 @@ async function world(k) {
     for (const layer of layers) {
         // console.log(layer.name)
         if (layer.name === "Collisions") {
-            drawCollisions(k, map, layer)
+            drawCollisions(k, map, layer);
             continue;
         }
 
@@ -36,9 +44,9 @@ async function world(k) {
                         map.add(
                             generateEnemyComponents(
                                 k,
-                                k.vec2(object.x, object.y),
-                            ),
-                        ),
+                                k.vec2(object.x, object.y)
+                            )
+                        )
                     );
                     continue;
                 }
@@ -51,6 +59,21 @@ async function world(k) {
 
     k.camScale(1.8);
     k.camPos(entities.player.worldPos());
+    k.onUpdate(async () => {
+        if (entities.player.pos.dist(k.camPos())) {
+            await k.tween(
+                k.camPos(),
+                entities.player.worldPos(),
+                0.15, 
+                (newPos) => {
+                    k.camPos(newPos);
+                },
+                k.easings.linear,
+            )
+        }
+    })
+
+    setPlayerMovement(k, entities.player);
 }
 
 export default world;
