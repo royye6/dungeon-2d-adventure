@@ -9,19 +9,19 @@ k.loadSprite("assets", "./assets/tilesets/tileset.png", {
         "player-down": {
             from: 1071,
             to: 1076,
-            loop: true,
+            loop: false,
         },
         "player-idle-side": 1053,
         "player-side": {
             from: 1053,
             to: 1058,
-            loop: true,
+            loop: false,
         },
         "player-idle-up": 1059,
         "player-up": {
             from: 1059,
             to: 1064,
-            loop: true,
+            loop: false,
         },
         "enemy-idle-down": 775,
     },
